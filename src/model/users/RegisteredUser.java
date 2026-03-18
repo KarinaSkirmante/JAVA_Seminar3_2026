@@ -23,7 +23,7 @@ public abstract class RegisteredUser extends GuestUser implements IPostPublish{
 	//3.setters
 	public void setUsername(String inputUsername) {
 		if(inputUsername != null && !inputUsername.isEmpty() 
-				&& inputUsername.matches("[A-Za-z0-9]{4,20}")) {
+				&& inputUsername.matches("[A-Za-z0-9.]{4,20}")) {
 			username = inputUsername;
 		}
 		else
@@ -31,9 +31,8 @@ public abstract class RegisteredUser extends GuestUser implements IPostPublish{
 			username = "DefaultUser";
 		}
 	}
-	//Regex maska parolei no : https://uibakery.io/regex-library/password
-	public void setPassword(String inputPassword) {
-		if(inputPassword != null && !inputPassword.isEmpty() && inputPassword.matches("/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/")) {
+		public void setPassword(String inputPassword) {
+		if(inputPassword != null && !inputPassword.isEmpty() && inputPassword.matches("[A-Za-z0-9 !@#$%^&*]{1,10}")) {
 		try
 		{
 			MessageDigest md = MessageDigest.getInstance("MD5");

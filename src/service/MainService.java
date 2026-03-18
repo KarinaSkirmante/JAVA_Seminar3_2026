@@ -29,5 +29,10 @@ public class MainService {
 		
 
 	}
+	public static ArrayList<GuestUser> getAllUsers() {
+		return allUsers;
+	}
 
+	
+	
 }

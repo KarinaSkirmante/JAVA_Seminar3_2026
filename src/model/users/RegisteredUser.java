@@ -38,7 +38,7 @@ public abstract class RegisteredUser extends GuestUser implements IPostPublish{
 		{
 			MessageDigest md = MessageDigest.getInstance("MD5");
 			md.update(inputPassword.getBytes());
-			password = md.digest().toString();
+			password = new String(md.digest());
 		}
 		catch (Exception e) {
 			password = "0000";
@@ -65,7 +65,7 @@ public abstract class RegisteredUser extends GuestUser implements IPostPublish{
 	}
 	//5.toString
 	public String toString() {
-		String result = id + ": " + username + " " + password;
+		String result = id + ": " + username;// + " " + password;
 		return result;
 	}
 	//6.parejas funkcijas
@@ -77,7 +77,7 @@ public abstract class RegisteredUser extends GuestUser implements IPostPublish{
 				
 				MessageDigest md = MessageDigest.getInstance("MD5");
 				md.update(inputPassword.getBytes());
-				String inputPasswordEncoded = md.digest().toString();
+				String inputPasswordEncoded = new String(md.digest());
 				
 				
 				if(tempRU.getUsername().equals(inputUsername)

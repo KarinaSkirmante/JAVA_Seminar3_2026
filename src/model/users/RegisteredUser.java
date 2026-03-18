@@ -6,8 +6,6 @@ public class RegisteredUser extends GuestUser{
 	//1.mainigie
 	private String username;
 	private String password;
-	private String title;//privatajam lietoatajam vards un uzvards, biznesa leitajam- kompanijas nosaukums
-	
 	
 	
 	//2.getters
@@ -17,25 +15,22 @@ public class RegisteredUser extends GuestUser{
 	public String getPassword() {
 		return password;
 	}
-	public String getTitle() {
-		return title;
-	}
+
 	
 	//3.setters
 	public void setUsername(String inputUsername) {
 		if(inputUsername != null && !inputUsername.isEmpty() 
 				&& inputUsername.matches("[A-Za-z0-9]{4,20}")) {
-		username = inputUsername;
+			username = inputUsername;
 		}
 		else
 		{
 			username = "DefaultUser";
 		}
 	}
+	//Regex maska parolei no : https://uibakery.io/regex-library/password
 	public void setPassword(String inputPassword) {
-		
-		//TODO parbaudit != null, not empty, masku
-		
+		if(inputPassword != null && !inputPassword.isEmpty() && inputPassword.matches("/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/")) {
 		try
 		{
 			MessageDigest md = MessageDigest.getInstance("MD5");
@@ -43,12 +38,15 @@ public class RegisteredUser extends GuestUser{
 			password = md.digest().toString();
 		}
 		catch (Exception e) {
-			// TODO: handle exception
+			password = "0000";
+		}
+		}
+		else
+		{
+			password = "0000";
 		}
 	}
-	public void setTitle(String title) {
-		this.title = title;
-	}
+
 	
 	
 	//4.abi konstruktori

@@ -47,10 +47,24 @@ public class RegisteredUser extends GuestUser{
 		}
 	}
 
-	
-	
 	//4.abi konstruktori
+		
+	public RegisteredUser() {
+		super();//te izsaucas GuestUser bezargumenta konstruktors
+		setUsername("karina.skirmante");
+		setPassword("As1@aaaa");
+	}
+	
+	public RegisteredUser(String inputUsername, String inputPassword) {
+		super();//te izsaucas GuestUser bezargumenta konstruktors
+		setUsername(inputUsername);
+		setPassword(inputPassword);
+	}
 	//5.toString
+	public String toString() {
+		String result = id + ": " + username + " " + password;
+		return result;
+	}
 	//6.parejas funkcijas
 
 }

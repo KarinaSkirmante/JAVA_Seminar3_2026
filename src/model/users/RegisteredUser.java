@@ -2,7 +2,10 @@ package model.users;
 
 import java.security.MessageDigest;
 
-public class RegisteredUser extends GuestUser{
+
+import service.IPostPublish;
+
+public abstract class RegisteredUser extends GuestUser implements IPostPublish{
 	//1.mainigie
 	private String username;
 	private String password;
@@ -66,5 +69,6 @@ public class RegisteredUser extends GuestUser{
 		return result;
 	}
 	//6.parejas funkcijas
+
 
 }
